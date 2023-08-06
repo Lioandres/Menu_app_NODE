@@ -13,7 +13,7 @@ const mostrarMenu=()=>{
         console.log(`${'2.'.green}-Listar tarea `)
         console.log(`${'3.'.green}-Listar tareas  completas`)
         console.log(`${'4.'.green}-Listar tareas pendientes `)
-        console.log(`${'4.'.green}-Eliminar tarea `)
+        console.log(`${'5.'.green}-Completar tares `)
         console.log(`${'5.'.green}-Borrar tarea `)
         console.log(`${'0.'.green}-Salir \n`)
     
