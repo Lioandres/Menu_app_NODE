@@ -1,4 +1,5 @@
 const Tarea = require("./tarea")
+require('colors')
 
 class Tareas{
     
@@ -34,14 +35,62 @@ class Tareas{
 
 
     listarTareas(){
-        let lista='Lista de Tareas'
-        this.listatoArr.forEach((tarea,index)=>
-        {lista=`${lista}\n
-         ${index+1}_${tarea.desc} `})
-        console.log(lista)
+       
+        let lista='Lista de Tareas\n'
+        let status=''
         
-    }
+        this.listatoArr.forEach((tarea,index)=>
+        {
+            
+         tarea.completadoEn 
+                    
+                    ? status='completada'.green 
+                    : status='pendiente'.red
 
+         const i=`${index+1}`.green
+         const desc=tarea.desc
+
+         lista=`${lista}  ${i}-  ${desc}:: ${status} \n`
+    })
+    console.log()    
+    console.log(lista)
+
+
+
+
+}
+
+    listarCompletadasPendientes(completada){
+        let listaCompletada='Lista de Tareas Completadas\n'
+        let listaPendiente='Lista de Tareas Pendientes\n'
+        let status=''
+        
+        this.listatoArr.forEach((tarea,index)=>
+        {
+            
+         tarea.completadoEn 
+                    
+                    ? status='completada'.green 
+                    : status='pendiente'.red
+
+         const i=`${index+1}`.green
+         const desc=tarea.desc;
+
+         
+         (status==='completada'.green) 
+                 ? listaCompletada=`${listaCompletada}  ${i}-  ${desc}:: ${status} \n`
+                 : listaPendiente=`${listaPendiente}  ${i}-  ${desc}:: ${status} \n`
+
+    })
+    console.log();    
+    (completada) 
+            ? console.log(listaCompletada)
+            : console.log(listaPendiente)
+
+
+
+
+    }
 
 
 }
