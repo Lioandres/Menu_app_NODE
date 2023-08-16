@@ -76,8 +76,43 @@ const leerDesc=async(message)=>{
     return desc
 } 
 
+const listaBorrar= async (tareas)=>{
+
+    const choices= tareas.map( (tarea,index) =>{
+        
+        const i=`${index+1}`.green
+
+        return  {
+            value:`${tarea.id}`,
+            name:`${i}.   ${tarea.desc}`,   
+        }
+        
+    })
+    console.log(choices)
+
+    const preguntasBorrar=[
+        {
+            type:'list',
+            name:'id',
+            message:'elija una opcion a borrar',
+            choices
+    
+        }
+    ]
+
+    const {id}=await  inquirer.prompt(preguntasBorrar)
+
+    return id
+
+
+
+
+
+}
+
 module.exports={
     inquirerMenu,
     pause,
-    leerDesc
+    leerDesc,
+    listaBorrar
 }
