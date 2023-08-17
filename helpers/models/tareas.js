@@ -93,13 +93,32 @@ class Tareas{
     }
 
    
-    borrarTareas(id){
+    borrarTareas(id=''){
         if(this._listado[id]) {
 
          delete this._listado[id]
         }
 
     }
+
+    toggleTareas(ids) {
+
+        ids.forEach((id)=>{
+            this._listado[id].completadoEn=new Date().toDateString()
+
+        })
+
+        this.listatoArr.forEach(tarea=>{
+            if(!ids.includes(tarea.id)) this._listado[tarea.id].completadoEn=null
+
+        })
+
+
+
+
+    }
+
+
 
 
 }

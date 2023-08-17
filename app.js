@@ -1,6 +1,6 @@
 require('colors')
 const { guardarArchivo, leerArchivo } = require('./helpers/guardarArchivo')
-const {inquirerMenu, pause, leerDesc,listaBorrar}=require('./helpers/inquirerHelp')
+const {inquirerMenu, pause, leerDesc,listaBorrar,confirmar,listaCheckbox}=require('./helpers/inquirerHelp')
 const Tareas = require('./helpers/models/tareas')
 
 
@@ -51,9 +51,20 @@ const main= async () => {
             tareas.listarCompletadasPendientes(null)           
             break;
 
+            case '5':
+               const ids=await listaCheckbox(tareas.listatoArr)
+               tareas.toggleTareas(ids)
+               console.log({ids})          
+            break;
+
             case '6':
-            const id=listaBorrar(tareas.listatoArr)
-            tareas.borrarTareas(id)           
+            const id= await listaBorrar(tareas.listatoArr)
+            if(id==='0') break
+            const ok=await confirmar(`esta seguro que desea borrar la tarea?`)
+            if(ok){
+            //console.log({id})
+            tareas.borrarTareas(id)
+            }           
             break;
             
         }
